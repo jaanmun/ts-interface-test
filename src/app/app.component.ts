@@ -5,6 +5,7 @@ import { StatusBar, Style } from '@capacitor/status-bar';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { TextZoom } from '@capacitor/text-zoom';
 import { AlertService } from 'src/services/alert.service';
+import { Device } from '@capacitor/device';
 
 @Component({
   selector: 'app-root',
@@ -26,31 +27,61 @@ export class AppComponent {
   }
 
   //시작시 세팅
-  initializeApp() {
-    this.platform.ready().then((data) => {
-      if (this.platform.is('capacitor')) {
-        //유저 폰트 크기 고정
-        TextZoom.set({ value: 1 });
 
-        //ligth 콘텐츠
-        StatusBar.setStyle({
+  //시작시 세팅
+  async initializeApp() {
+    ///TODO 안예쁘긴 한데 이게 최선이에요
+    this.platform.ready().then(async (data) => {
+      //디바이스 정보 가져오기
+      const deviceInfo = await Device.getInfo();
+      //서버로 돌릴때 진행하지 않기
+      if (!this.platform.is('capacitor')) {
+        return false;
+      }
+
+      //디바이스가 안드로이 12 이상일때 옵션
+      if (
+        deviceInfo.platform == 'android' &&
+        Number(deviceInfo.osVersion) > 11
+      ) {
+        //유저 폰트 크기 고정
+        await TextZoom.set({ value: 1 });
+
+        SplashScreen.hide().then(async (data) => {
+          await SplashScreen.show({
+            autoHide: false,
+          });
+
+          setTimeout(async () => {
+            await StatusBar.setBackgroundColor({
+              color: '#ffffff',
+            });
+            await StatusBar.setOverlaysWebView({
+              overlay: false,
+            });
+            await StatusBar.setStyle({
+              style: Style.Light,
+            });
+            await SplashScreen.hide();
+          }, 500);
+        });
+      } else {
+        //그외
+        await TextZoom.set({ value: 1 });
+
+        await StatusBar.setStyle({
           style: Style.Light,
         });
 
-        if (this.platform.is('android')) {
-          //해당 코드는 안드로이드만 적용 가능 코드입니다.
-          StatusBar.setBackgroundColor({
+        if (deviceInfo.platform == 'android') {
+          await StatusBar.setBackgroundColor({
             color: '#ffffff',
           });
-          StatusBar.setOverlaysWebView({
+          await StatusBar.setOverlaysWebView({
             overlay: false,
           });
         }
-
-        //스플레시 끝 임시
-        setTimeout(() => {
-          SplashScreen.hide();
-        }, 500);
+        await SplashScreen.hide();
       }
     });
   }

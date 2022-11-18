@@ -9,6 +9,10 @@ const config: CapacitorConfig = {
     SplashScreen: {
       launchAutoHide: false,
       splashFullScreen: true,
+      showSpinner: true,
+      androidSpinnerStyle: 'small',
+      iosSpinnerStyle: 'small',
+      splashImmersive: true,
     },
   },
   ios: {
