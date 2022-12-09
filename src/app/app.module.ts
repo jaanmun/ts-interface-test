@@ -23,7 +23,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
