@@ -10,29 +10,24 @@ export class LoadingService {
   constructor(public loader: LoadingController) {}
 
   async load(message?) {
-    this.loading = await this.loader.create({
-      duration: 5000,
-      translucent: true,
-      // cssClass: '',
-      backdropDismiss: false,
-      message,
-    });
-    await this.loading.present();
+    if (!this.isLoading) {
+      this.loading = await this.loader.create({
+        duration: 5000,
+        translucent: true,
+        backdropDismiss: false,
+        message,
+      });
+      await this.loading.present();
+      this.loading.onDidDismiss().then((dismiss) => {
+        this.isLoading = false;
+        this.loading = null;
+      });
+    }
   }
 
   hide() {
     if (this.loading) {
       this.loading.dismiss();
     }
-  }
-
-  async lognLoad(message?) {
-    this.loading = await this.loader.create({
-      translucent: true,
-      // cssClass: '',
-      backdropDismiss: false,
-      message,
-    });
-    await this.loading.present();
   }
 }
