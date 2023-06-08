@@ -10,7 +10,7 @@ export class LoadingService {
   constructor(public loader: LoadingController) {}
 
   async load(message?) {
-    if (!this.isLoading) {
+    if (!this.loading) {
       this.loading = await this.loader.create({
         duration: 5000,
         translucent: true,
@@ -18,8 +18,8 @@ export class LoadingService {
         message,
       });
       await this.loading.present();
+
       this.loading.onDidDismiss().then((dismiss) => {
-        this.isLoading = false;
         this.loading = null;
       });
     }

@@ -64,53 +64,6 @@ const errorMessages = {
   },
 };
 
-const successMessages = {
-  passwordResetSent: {
-    title: '비밀번호 재설정!',
-    subTitle: '로 비밀번호 재설정 메일이 발송되었습니다.',
-  },
-
-  exchangeSent: { title: '환전 신청', subTitle: '환전 신청이 완료되었습니다.' },
-
-  profileUpdated: {
-    title: '프로필 업데이트',
-    subTitle: '성공적으로 프로필이 업데이트 되었습니다.',
-  },
-  emailVerified: {
-    title: 'Email Confirmed!',
-    subTitle: 'Congratulations! Your email has been confirmed!',
-  },
-  emailVerificationSent: {
-    title: '회원가입 완료',
-    subTitle:
-      '인증메일이 전송되었습니다.<br>인증 완료 후 로그인하시면 됩니다.<br>인증메일 확인이 안 될 경우,<br>스팸메일함을 확인해주세요.',
-  },
-  accountDeleted: {
-    title: 'Account Deleted!',
-    subTitle: 'Your account has been successfully deleted.',
-  },
-  passwordChanged: {
-    title: '비밀번호 변경',
-    subTitle: '성공적으로 비밀번호가 변경되었습니다.',
-  },
-  friendRequestSent: {
-    title: 'Friend Request Sent!',
-    subTitle: 'Your friend request has been successfully sent!',
-  },
-  friendRequestRemoved: {
-    title: 'Friend Request Deleted!',
-    subTitle: 'Your friend request has been successfully deleted.',
-  },
-  groupUpdated: {
-    title: 'Group Updated!',
-    subTitle: 'This group has been successfully updated!',
-  },
-  groupLeft: {
-    title: 'Leave Group',
-    subTitle: 'You have successfully left this group.',
-  },
-};
-
 @Injectable({
   providedIn: 'root',
 })
@@ -411,24 +364,5 @@ export class AlertService {
         );
         break;
     }
-  }
-
-  async showEmailVerificationSentMessage(): Promise<any> {
-    return new Promise(async (resolve: any) => {
-      const alert = await this.alertCtrl.create({
-        cssClass: 'present-alert',
-        header: successMessages.emailVerificationSent['title'],
-        message: successMessages.emailVerificationSent['subTitle'],
-        buttons: [
-          {
-            text: '확인',
-            handler: () => {
-              resolve(true);
-            },
-          },
-        ],
-      });
-      await alert.present();
-    });
   }
 }
