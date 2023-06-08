@@ -33,7 +33,7 @@
     "@ionic/angular": "^6.1.9",
     "firebase": "^9.12.1",
     "ionicons": "^6.0.3",
-    "rxjs": "~6.6.0"
+    "rxjs": "7.4.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.0",

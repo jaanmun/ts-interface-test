@@ -10,9 +10,19 @@ import { AppComponent } from './app.component';
 /// firebase ///
 
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import {
+  FirestoreModule,
+  getFirestore,
+  provideFirestore,
+} from '@angular/fire/firestore';
+import {
+  FirebaseAppModule,
+  initializeApp,
+  provideFirebaseApp,
+} from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+// import { provideFunctions, getFunctions } from'@angular/fire/functions';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,8 +32,13 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     BrowserModule,
     IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
+    FirestoreModule,
+    FirebaseAppModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    // provideFunctions(() => getFunctions()),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

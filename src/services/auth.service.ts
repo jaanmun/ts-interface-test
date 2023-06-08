@@ -1,7 +1,7 @@
 /** @format */
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { DbService } from './firebase.service';
+import { DbService } from './db.service';
 import { AlertService } from './alert.service';
 import { switchMap, take, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';

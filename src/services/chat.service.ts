@@ -15,7 +15,7 @@ import {
 } from 'src/app/models/chat.model';
 import { CommonService } from './common.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { DbService } from './firebase.service';
+import { DbService } from './db.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
