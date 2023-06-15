@@ -9,17 +9,17 @@ import { AppComponent } from './app.component';
 
 /// firebase ///
 
-// import { environment } from 'src/environments/environment';
-// import {
-//   FirestoreModule,
-//   getFirestore,
-//   provideFirestore,
-// } from '@angular/fire/firestore';
-// import {
-//   FirebaseAppModule,
-//   initializeApp,
-//   provideFirebaseApp,
-// } from '@angular/fire/app';
+import { environment } from 'src/environments/environment';
+import {
+  FirestoreModule,
+  getFirestore,
+  provideFirestore,
+} from '@angular/fire/firestore';
+import {
+  FirebaseAppModule,
+  initializeApp,
+  provideFirebaseApp,
+} from '@angular/fire/app';
 // import { getAuth, provideAuth } from '@angular/fire/auth';
 // import { provideStorage, getStorage } from '@angular/fire/storage';
 // import { provideFunctions, getFunctions } from'@angular/fire/functions';
@@ -32,11 +32,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
-    // FirestoreModule,
-    // FirebaseAppModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    FirestoreModule,
+    FirebaseAppModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore()),
+    provideFirestore(() => getFirestore()),
     // provideStorage(() => getStorage()),
     // provideFunctions(() => getFunctions()),
   ],
