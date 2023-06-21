@@ -17,6 +17,9 @@ interface Company {
   bs: string;
 }
 
+/**
+ * 사용자 정보
+ */
 export interface Member {
   id: number;
   name: string;

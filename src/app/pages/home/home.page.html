@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title>홈</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- 활성화/비활성화 토글 체크박스 -->
+  <!-- <ion-item class="top-checkbox ion-padding" (click)="toggleCheckbox()">
+    <ion-label>체크박스 활성화</ion-label>
+    <ion-checkbox justify="start" [checked]="isActiveCheckbox"></ion-checkbox>
+  </ion-item> -->
 
+  <!-- 기본 리스트 -->
+  <ion-list>
+    <ion-item *ngFor="let item of joinPosts">
+      <ion-card button>
+        <ion-card-header>
+          <ion-card-title>{{ item.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{ item.body }}</ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+  <!-- 활성화/비활성화 보여주기 위한 리스트 -->
+  <!-- <ion-list>
+    <ion-item class="ion-padding" *ngFor="let item of joinPosts">
+      <ion-checkbox
+        *ngIf="isActiveCheckbox"
+        slot="start"
+        [disabled]="!item.isMatch"
+      ></ion-checkbox>
+      <ion-card button [disabled]="!item.isMatch">
+        <ion-card-header>
+          <ion-card-title>{{ item.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{ item.body }}</ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list> -->
 </ion-content>

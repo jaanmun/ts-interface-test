@@ -208,7 +208,7 @@ export const ArrayleftJoinDocument =
 
 // c r u d
 export class DbService {
-  constructor(public firestore: Firestore) {}
+  constructor(public firestore: Firestore,) {}
 
   collection$(path, queryFn?) {
     if (queryFn) {

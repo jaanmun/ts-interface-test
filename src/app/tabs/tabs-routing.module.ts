@@ -12,7 +12,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../pages/home/home.module').then((m) => m.HomePageModule),
       },
-
+      {
+        path: 'interface',
+        loadChildren: () =>
+          import('../pages/interface/interface.module').then(
+            (m) => m.InterfacePageModule
+          ),
+      },
       {
         path: '',
         redirectTo: '/tabs/home',

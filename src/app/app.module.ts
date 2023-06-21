@@ -20,6 +20,7 @@ import {
   initializeApp,
   provideFirebaseApp,
 } from '@angular/fire/app';
+import { AnimateItemsDirective } from './core/directives/animate-items.directive';
 // import { getAuth, provideAuth } from '@angular/fire/auth';
 // import { provideStorage, getStorage } from '@angular/fire/storage';
 // import { provideFunctions, getFunctions } from'@angular/fire/functions';
@@ -42,5 +43,6 @@ import {
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}
